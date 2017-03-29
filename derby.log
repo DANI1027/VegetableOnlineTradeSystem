@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Mar 29 16:26:42 CST 2017:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.12.1.1 - (1704137): instance a816c00e-015b-192c-9167-00000f0acae8 
+on database directory memory:/Users/hu/Work/Intellij Idea/VegetableOnlineTradeSystem/testdb with class loader sun.misc.Launcher$AppClassLoader@1d81eb93 
+Loaded from file:/Users/hu/.m2/repository/org/apache/derby/derby/10.12.1.1/derby-10.12.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_121-b13
+user.dir=/Users/hu/Work/Intellij Idea/VegetableOnlineTradeSystem
+os.name=Mac OS X
+os.arch=x86_64
+os.version=10.12.3
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
