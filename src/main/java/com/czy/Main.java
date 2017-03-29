@@ -3,6 +3,7 @@ package com.czy;
 import com.avos.avoscloud.AVOSCloud;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.filter.CharacterEncodingFilter;
 
 /**
  * Created by hu on 2017/3/29.

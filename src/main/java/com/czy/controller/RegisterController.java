@@ -22,8 +22,9 @@ public class RegisterController {
     public String register(@RequestBody UserInfo userInfo) {
         JSONObject jsonObject = new JSONObject();
 
-        UserInfo userInfoInSQL = userInfoDao.findByMobilePhoneNumber(userInfo.getMobilePhoneNumber());
-        if (userInfoInSQL == null) {
+        UserInfo userInfoByMobileName = userInfoDao.findByMobilePhoneNumber(userInfo.getMobilePhoneNumber());
+        UserInfo userInfoByName = userInfoDao.findByUsername(userInfo.getUsername());
+        if (userInfoByMobileName == null && userInfoByName == null) {
             try {
                 userInfoDao.save(userInfo);
                 jsonObject.put("result", true);
@@ -32,10 +33,14 @@ public class RegisterController {
                 jsonObject.put("result", false);
                 jsonObject.put("reason", "手机号码已经注册");
             }
-        } else {
+        } else if (userInfoByMobileName != null) {
             logger.info("手机号码已经注册");
             jsonObject.put("result", false);
             jsonObject.put("reason", "手机号码已经注册");
+        } else {
+            logger.info("用户名已经存在");
+            jsonObject.put("result", false);
+            jsonObject.put("reason", "用户名已经存在");
         }
         return jsonObject.toString();
     }
@@ -55,10 +60,16 @@ public class RegisterController {
             if (userInfo.getPassword().equals(userInfoInSQL.getPassword())) {
                 jsonObject.put("result", true);
                 jsonObject.put("reason", "登录成功");
+                jsonObject.put("isAdmin", userInfoInSQL.isAdmin());
             } else {
                 jsonObject.put("result", false);
                 jsonObject.put("reason", "登录失败");
+                jsonObject.put("isAdmin", false);
             }
+        } else {
+            jsonObject.put("result", false);
+            jsonObject.put("reason", "登录失败");
+            jsonObject.put("isAdmin", false);
         }
         return jsonObject.toString();
     }
